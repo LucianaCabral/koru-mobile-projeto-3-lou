@@ -22,9 +22,8 @@ class Cliente extends Pessoa {
   }
 
   void comprarProduto(Produto produto, Revendedor revendedor) {
-    // if (dinheiro >= produto.valor && produto.qtdEstoque > 0) {
     try {
-      if(dinheiro>= produto.valor) {
+      if (dinheiro>= produto.valor) {
         revendedor.venderProduto(produto);
         dinheiro -= produto.valor;
         _produtosComprados.add(produto);
@@ -35,12 +34,8 @@ class Cliente extends Pessoa {
       if (exception is Exception) {
         throw Exception(
             "No momento não possuímos o produto ${produto
-                .nome} em estoque. MÉTODO COMPRAR PRODUTO NA CLASSE CLIENTE");
+                .nome} em estoque.");
       }
     }
-
-    // } else {
-    //   print('O cliente não tem saldo suficiente para comprar o produto');
-    // }
   }
 }
