@@ -32,9 +32,7 @@ main() {
       qtdEstoque: 10); // Produto
 
   Produto produto2 = Produto(
-      nome: 'Oleo de massagem 75ml',
-      valor: 95.00,
-      qtdEstoque: 20); // Produto
+      nome: 'Oleo de massagem 75ml', valor: 95.00, qtdEstoque: 20); // Produto
 
 /* Declaração de objetos Produto */
 
@@ -44,7 +42,8 @@ main() {
   cliente1.falar('Olá, quero comporar um produto');
 
   //Add dinheiro
-  print('O Cliente ${cliente1.nome} tem o seguinte saldo ${cliente1.dinheiro} antes do depósito');
+  print(
+      'O Cliente ${cliente1.nome} tem o seguinte saldo ${cliente1.dinheiro} antes do depósito');
   cliente1.adicionarDinheiro(1000);
   pularLinha();
 
@@ -56,26 +55,16 @@ main() {
   cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto2, revendedor1);
 
-  // print('valor produto: ${produto1.valor} | revendedor: ${revendedor1.nome} |  Saldo final cliente ${cliente1.nome}: ${cliente1.dinheiro.toStringAsFixed(2)}');
-  // pularLinha();
-  // mostrarQtdProdutoEmEstoque(produto1.nome, produto1.qtdEstoque);
-  // mostrarQtdVendida(produto1.nome, produto1.qtdVendida);
-
   pularLinha();
   print('Informações do Produto:');
-  print('Receita gerada com o produto  ${produto1.nome}: ${produto1.verReceitaGerada()
-      .toStringAsFixed(2)}');
-  print('Receita gerada com o produto  ${produto2.nome}: ${produto2.verReceitaGerada()
-      .toStringAsFixed(2)}');
-  print('Produto em estoque do produto ${produto1.nome}: ${produto1.qtdEstoque}');
-  print('Produto em estoque do produto ${produto2.nome}: ${produto2.qtdEstoque}');
+  print('Receita gerada com o produto  ${produto1.nome}: ${produto1.verReceitaGerada().toStringAsFixed(2)}');
+  print('Receita gerada com o produto  ${produto2.nome}: ${produto2.verReceitaGerada().toStringAsFixed(2)}');
 
-  print('TOTAL VENDIDOS: ${revendedor1.calcularTotalVendido().toStringAsFixed(2)}');
+  mostrarQtdProdutoEmEstoque(produto1.nome, produto1.qtdEstoque);
+  mostrarQtdProdutoEmEstoque(produto2.nome, produto2.qtdEstoque);
+  mostrarQtdVendida(produto1.nome, produto1.qtdVendida);
+  mostrarQtdVendida(produto2.nome, produto2.qtdVendida);
 
-
-      // Calcular a média dos produtos vendidos pelo revendedor1
-  double mediaProdutosVendidos = revendedor1.calcularMediaProdutosVendidos();
-  print('A média dos valores dos produtos vendidos pelo revendedor1 é: ${mediaProdutosVendidos.toStringAsFixed(2)}');
-  revendedor1.calcularLucro();
-  print('Lucro sobre a venda é: ${revendedor1.calcularLucro().toStringAsFixed(2)}');
+  pularLinha();
+  revendedor1.verResumo();
 }
