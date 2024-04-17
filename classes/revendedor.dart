@@ -1,4 +1,5 @@
 import '../enums/enums.dart';
+import '../utils.dart';
 import 'pessoa.dart';
 import 'produto.dart';
 
@@ -7,6 +8,7 @@ class Revendedor extends Pessoa {
   List<Produto> _produtosVendidos = <Produto>[];
 
   final double porcentagemDeLucro = 0.2;
+  double totalProdutosVendidos = 0.0;
 
   Revendedor(super.genero, this.matricula,
       {required super.nome, required super.cpf, required super.dataNascimento});
@@ -35,7 +37,38 @@ class Revendedor extends Pessoa {
       produto.realizarVenda();
       _produtosVendidos.add(produto);
     } else {
-      throw Exception("No momento não possuímos o produto $nome em estoque. MÉTODO VENDER PRODUTO NA CLASSE REVENDEDOR");
+      throw Exception(
+          "No momento não possuímos o produto $nome em estoque. MÉTODO VENDER PRODUTO NA CLASSE REVENDEDOR");
     }
+  }
+
+  double calcularTotalVendido() {
+    if (_produtosVendidos.isNotEmpty) {
+      for (Produto produto in _produtosVendidos) {
+        totalProdutosVendidos += produto.valor;
+      }
+      return totalProdutosVendidos.toDouble();
+    } else {
+      throw Exception();
+    }
+  }
+
+  double calcularMediaProdutosVendidos() {
+    if (_produtosVendidos.isNotEmpty) {
+      return totalProdutosVendidos / _produtosVendidos.length;
+    } else {
+      throw Exception("Nenhum produto vendido ainda.");
+    }
+  }
+
+  double calcularLucro() {
+    return totalProdutosVendidos * porcentagemDeLucro;
+  }
+
+  void verResumo() {
+    double totalVendido = calcularTotalVendido();
+    double media = calcularMediaProdutosVendidos();
+    double lucroObtido = calcularLucro();
+    imprimirResumo(nome, totalVendido, media, lucroObtido);
   }
 }

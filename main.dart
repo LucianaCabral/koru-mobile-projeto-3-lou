@@ -29,12 +29,10 @@ main() {
   Produto produto1 = Produto(
       nome: 'Colônia Floratta Flores Secretas 75ml',
       valor: 133.33,
-      qtdEstoque: 1); // Produto
+      qtdEstoque: 10); // Produto
 
   Produto produto2 = Produto(
-      nome: 'LOleo de massagem 75ml',
-      valor: 95.00,
-      qtdEstoque: 0); // Produto
+      nome: 'Oleo de massagem 75ml', valor: 95.00, qtdEstoque: 20); // Produto
 
 /* Declaração de objetos Produto */
 
@@ -44,25 +42,29 @@ main() {
   cliente1.falar('Olá, quero comporar um produto');
 
   //Add dinheiro
-  print('O Cliente ${cliente1.nome} tem o seguinte saldo ${cliente1.dinheiro} antes do depósito');
+  print(
+      'O Cliente ${cliente1.nome} tem o seguinte saldo ${cliente1.dinheiro} antes do depósito');
   cliente1.adicionarDinheiro(1000);
   pularLinha();
 
 //aqui o cliente compra o produto e nele já tem um método que chama o revendedor.venderProduto
   cliente1.comprarProduto(produto1, revendedor1);
+  cliente1.comprarProduto(produto1, revendedor1);
+  cliente1.comprarProduto(produto1, revendedor1);
+  cliente1.comprarProduto(produto1, revendedor1);
+  cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto2, revendedor1);
-  print('valor produto: ${produto1.valor} | revendedor: ${revendedor1.nome} |  Saldo final cliente ${cliente1.nome}: ${cliente1.dinheiro.toStringAsFixed(2)}');
-  pularLinha();
-  mostrarQtdProdutoEmEstoque(produto1.nome, produto1.qtdEstoque);
-  mostrarQtdVendida(produto1.nome, produto1.qtdVendida);
 
   pularLinha();
   print('Informações do Produto:');
-  print('Total de itens comprados: ${produto1.qtdVendida}');
-  print('Total de itens vendidos: ${produto1.qtdVendida}');
+  print('Receita gerada com o produto  ${produto1.nome}: ${produto1.verReceitaGerada().toStringAsFixed(2)}');
+  print('Receita gerada com o produto  ${produto2.nome}: ${produto2.verReceitaGerada().toStringAsFixed(2)}');
+
+  mostrarQtdProdutoEmEstoque(produto1.nome, produto1.qtdEstoque);
+  mostrarQtdProdutoEmEstoque(produto2.nome, produto2.qtdEstoque);
+  mostrarQtdVendida(produto1.nome, produto1.qtdVendida);
+  mostrarQtdVendida(produto2.nome, produto2.qtdVendida);
+
   pularLinha();
-  print(
-      'Receita gerada com o produto ${produto1.nome}: ${produto1.verReceitaGeraa().toStringAsFixed(2)}');
-  print(
-      'Produto em estoque do produto ${produto1.nome}: ${produto1.qtdEstoque}');
+  revendedor1.verResumo();
 }

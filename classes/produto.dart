@@ -17,7 +17,7 @@ class Produto {
     }
   }
 
-  double verReceitaGeraa() {
+  double verReceitaGerada() {
     return qtdVendida * valor;
   }
 }
