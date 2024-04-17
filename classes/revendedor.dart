@@ -59,4 +59,9 @@ class Revendedor extends Pessoa {
       throw Exception("Nenhum produto vendido ainda.");
     }
   }
+
+  double calcularLucro() {
+    return totalProdutosVendidos * porcentagemDeLucro;
+  }
+
 }

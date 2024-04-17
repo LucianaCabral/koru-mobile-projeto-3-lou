@@ -70,10 +70,12 @@ main() {
   print('Produto em estoque do produto ${produto1.nome}: ${produto1.qtdEstoque}');
   print('Produto em estoque do produto ${produto2.nome}: ${produto2.qtdEstoque}');
 
-  print('TOTAL VENDIDOS: ${revendedor1.calcularTotalVendido()}');
+  print('TOTAL VENDIDOS: ${revendedor1.calcularTotalVendido().toStringAsFixed(2)}');
 
 
       // Calcular a média dos produtos vendidos pelo revendedor1
   double mediaProdutosVendidos = revendedor1.calcularMediaProdutosVendidos();
   print('A média dos valores dos produtos vendidos pelo revendedor1 é: ${mediaProdutosVendidos.toStringAsFixed(2)}');
+  revendedor1.calcularLucro();
+  print('Lucro sobre a venda é: ${revendedor1.calcularLucro().toStringAsFixed(2)}');
 }
