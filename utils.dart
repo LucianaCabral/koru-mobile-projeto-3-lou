@@ -10,10 +10,6 @@ void mostrarQtdVendida(String nomeProduto, int qtdVendida) {
   print('$nomeProduto | Quantidade vendida: $qtdVendida');
 }
 
-void imprimirInformacao(String informacao, double totalvendido) {
-  print("O $informacao foi de ${totalvendido.toStringAsFixed(2)} reais.");
-}
-
 void imprimirResumo(
     String nome, double totalVendido, double media, double lucroObtido) {
   print(
