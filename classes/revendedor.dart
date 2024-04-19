@@ -44,21 +44,17 @@ class Revendedor extends Pessoa {
 
   double calcularTotalVendido() {
     if (_produtosVendidos.isNotEmpty) {
-      for (Produto produto in _produtosVendidos) {
+      _produtosVendidos.forEach((Produto produto) {
         totalProdutosVendidos += produto.valor;
-      }
+      });
       return totalProdutosVendidos.toDouble();
     } else {
-      throw Exception("Não há produtos vendidos");
+      throw Exception("Nenhum produto vendido ainda.");
     }
   }
 
   double calcularMediaProdutosVendidos() {
-    if (_produtosVendidos.isNotEmpty) {
-      return totalProdutosVendidos / _produtosVendidos.length;
-    } else {
-      throw Exception("Nenhum produto vendido ainda.");
-    }
+    return totalProdutosVendidos / _produtosVendidos.length;
   }
 
   double calcularLucro() {
