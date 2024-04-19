@@ -1,9 +1,9 @@
+import '../utils.dart';
 import 'pessoa.dart';
 import 'produto.dart';
 import 'revendedor.dart';
 
 class Cliente extends Pessoa {
-
   double dinheiro;
   List<Produto> _produtosComprados = <Produto>[];
 
@@ -22,9 +22,8 @@ class Cliente extends Pessoa {
   }
 
   void comprarProduto(Produto produto, Revendedor revendedor) {
-    // if (dinheiro >= produto.valor && produto.qtdEstoque > 0) {
     try {
-      if(dinheiro>= produto.valor) {
+      if (dinheiro >= produto.valor) {
         revendedor.venderProduto(produto);
         dinheiro -= produto.valor;
         _produtosComprados.add(produto);
@@ -34,13 +33,33 @@ class Cliente extends Pessoa {
     } catch (exception) {
       if (exception is Exception) {
         throw Exception(
-            "No momento não possuímos o produto ${produto
-                .nome} em estoque. MÉTODO COMPRAR PRODUTO NA CLASSE CLIENTE");
+            "No momento não possuímos o produto ${produto.nome} em estoque.");
       }
     }
+  }
 
-    // } else {
-    //   print('O cliente não tem saldo suficiente para comprar o produto');
-    // }
+  double calcularTotalGasto() {
+    double totalGasto = 0;
+    for (Produto produto in _produtosComprados) {
+      totalGasto += produto.valor;
+    }
+    return totalGasto;
+  }
+
+  double calcularMediaProdutosComprados() {
+    double totalGasto = calcularTotalGasto();
+      return totalGasto / _produtosComprados.length;
+  }
+
+  void verResumoCliente() {
+    double totalGasto = calcularTotalGasto();
+    double mediaProdutos = calcularMediaProdutosComprados();
+    totalGastoCliente(nome, totalGasto, mediaProdutos);
+  }
+
+  void ordenarProdutosComprados() {
+    List<Produto> produtosOrdenados = List.from(_produtosComprados);
+    produtosOrdenados.sort((a, b) => a.nome.compareTo(b.nome));
+    imprimirProdutosOrdenados(produtosOrdenados);
   }
 }

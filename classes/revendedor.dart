@@ -49,7 +49,7 @@ class Revendedor extends Pessoa {
       }
       return totalProdutosVendidos.toDouble();
     } else {
-      throw Exception();
+      throw Exception("Não há produtos vendidos");
     }
   }
 
