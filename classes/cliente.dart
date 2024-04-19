@@ -44,4 +44,9 @@ class Cliente extends Pessoa {
     }
     return totalGasto;
   }
+
+  double calcularMediaProdutosComprados() {
+    double totalGasto = calcularTotalGasto();
+      return totalGasto / _produtosComprados.length;
+  }
 }
