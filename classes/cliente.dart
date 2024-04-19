@@ -3,7 +3,6 @@ import 'produto.dart';
 import 'revendedor.dart';
 
 class Cliente extends Pessoa {
-
   double dinheiro;
   List<Produto> _produtosComprados = <Produto>[];
 
@@ -23,7 +22,7 @@ class Cliente extends Pessoa {
 
   void comprarProduto(Produto produto, Revendedor revendedor) {
     try {
-      if (dinheiro>= produto.valor) {
+      if (dinheiro >= produto.valor) {
         revendedor.venderProduto(produto);
         dinheiro -= produto.valor;
         _produtosComprados.add(produto);
@@ -33,9 +32,16 @@ class Cliente extends Pessoa {
     } catch (exception) {
       if (exception is Exception) {
         throw Exception(
-            "No momento não possuímos o produto ${produto
-                .nome} em estoque.");
+            "No momento não possuímos o produto ${produto.nome} em estoque.");
       }
     }
+  }
+
+  double calcularTotalGasto() {
+    double totalGasto = 0;
+    for (Produto produto in _produtosComprados) {
+      totalGasto += produto.valor;
+    }
+    return totalGasto;
   }
 }

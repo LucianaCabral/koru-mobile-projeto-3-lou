@@ -67,4 +67,6 @@ main() {
 
   pularLinha();
   revendedor1.verResumo();
+  cliente1.calcularTotalGasto();
+  print('TOTAL GASTO CLIENTE: O total gasto foi de ${ cliente1.calcularTotalGasto().toStringAsFixed(2)} ');
 }
