@@ -1,3 +1,4 @@
+import '../utils.dart';
 import 'pessoa.dart';
 import 'produto.dart';
 import 'revendedor.dart';
@@ -48,5 +49,11 @@ class Cliente extends Pessoa {
   double calcularMediaProdutosComprados() {
     double totalGasto = calcularTotalGasto();
       return totalGasto / _produtosComprados.length;
+  }
+
+  void verResumoCliente() {
+    double totalGasto = calcularTotalGasto();
+    double mediaProdutos = calcularMediaProdutosComprados();
+    totalGastoCliente(nome, totalGasto, mediaProdutos);
   }
 }
