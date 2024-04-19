@@ -40,9 +40,9 @@ class Cliente extends Pessoa {
 
   double calcularTotalGasto() {
     double totalGasto = 0;
-    for (Produto produto in _produtosComprados) {
-      totalGasto += produto.valor;
-    }
+    _produtosComprados.forEach((Produto produto) {
+     totalGasto += produto.valor;
+    });
     return totalGasto;
   }
 
