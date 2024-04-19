@@ -56,4 +56,10 @@ class Cliente extends Pessoa {
     double mediaProdutos = calcularMediaProdutosComprados();
     totalGastoCliente(nome, totalGasto, mediaProdutos);
   }
+
+  void ordenarProdutosComprados() {
+    List<Produto> produtosOrdenados = List.from(_produtosComprados);
+    produtosOrdenados.sort((a, b) => a.nome.compareTo(b.nome));
+    imprimirProdutosOrdenados(produtosOrdenados);
+  }
 }

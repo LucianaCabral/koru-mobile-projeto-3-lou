@@ -1,3 +1,5 @@
+import 'classes/produto.dart';
+
 void pularLinha() {
   print('\n');
 }
@@ -22,4 +24,10 @@ void totalGastoCliente(String nome, double totalGasto, double media) {
   print('Resumo Cliente: O total gasto $nome foi de R\$ ${totalGasto.
   toStringAsFixed(2)} reais e a média de valor dos produtos foi de R\$ ${media.
   toStringAsFixed(2)} reais.');
+}
+
+void imprimirProdutosOrdenados(List<Produto> produtos) {
+  produtos.forEach((produto) {
+    print('${produto.nome} - R\$ ${produto.valor.toStringAsFixed(2)}');
+  });
 }

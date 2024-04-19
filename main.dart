@@ -32,7 +32,10 @@ main() {
       qtdEstoque: 10); // Produto
 
   Produto produto2 = Produto(
-      nome: 'Oleo de massagem 75ml', valor: 95.00, qtdEstoque: 20); // Produto
+      nome: 'Oleo de massagem 75ml', valor: 95.00, qtdEstoque: 20);
+
+  Produto produto3 = Produto(
+      nome: 'Máscara de Cílios Make B. Explosion Effect 10g', valor: 99.90, qtdEstoque: 94);
 
 /* Declaração de objetos Produto */
 
@@ -54,6 +57,7 @@ main() {
   cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto2, revendedor1);
+  cliente1.comprarProduto(produto3, revendedor1);
 
   pularLinha();
   print('Informações do Produto:');
@@ -69,4 +73,5 @@ main() {
   revendedor1.verResumo();
   pularLinha();
   cliente1.verResumoCliente();
+  cliente1.ordenarProdutosComprados();
 }
