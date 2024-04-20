@@ -36,4 +36,31 @@ class Pessoa{
 
     print('${this.nome} diz: ${texto}');
   }
+
+  void termometroDoHumor(Humor humor) {
+    String humorDoDia;
+    switch (humor) {
+      case (Humor.animada):
+        humorDoDia = 'Que bom que você está animada! $this.nome';
+        break;
+      case (Humor.ansiosa):
+        humorDoDia = 'Pare um pouco, conte até mil e respire, $this.nome';
+        break;
+      case (Humor.cansada):
+        humorDoDia = 'Recarregue as suas baterias e volte com força total! $this.nome';
+        break;
+      case (Humor.feliz):
+        humorDoDia = 'Quem bom que você está feliz!! $this.nome seja feliz enquaanto pode!';
+        break;
+      case (Humor.triste):
+        humorDoDia = 'Não fique triste que ainda pode piorar. $this.nome Te anima e siga em frente. ';
+        break;
+      case (Humor.estressada):
+        humorDoDia = 'No stress! $this.nome fica mna boa!';
+        break;
+      default:
+        humorDoDia = 'P';
+    }
+    print('$nome, $humorDoDia');
+  }
 }

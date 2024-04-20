@@ -1,4 +1,5 @@
 import '../utils.dart';
+import 'brinde.dart';
 import 'pessoa.dart';
 import 'produto.dart';
 import 'revendedor.dart';
@@ -6,6 +7,8 @@ import 'revendedor.dart';
 class Cliente extends Pessoa {
   double dinheiro;
   List<Produto> _produtosComprados = <Produto>[];
+  List<Brinde> _brindes = <Brinde>[];
+  int pontos = 0;
 
   Cliente(super.genero, this.dinheiro,
       {required super.nome, required super.cpf, required super.dataNascimento});
@@ -17,8 +20,7 @@ class Cliente extends Pessoa {
 
   void adicionarDinheiro(double valor) {
     dinheiro += valor;
-    print(
-        '${nome} após o depósito de $valor agora possui ${dinheiro.toStringAsFixed(2)} reais.');
+    imprimirSaldoAposDeposito(nome, valor, dinheiro);
   }
 
   void comprarProduto(Produto produto, Revendedor revendedor) {
@@ -27,6 +29,8 @@ class Cliente extends Pessoa {
         revendedor.venderProduto(produto);
         dinheiro -= produto.valor;
         _produtosComprados.add(produto);
+        pontos++;
+        print('numero de pontos: $pontos');
       } else {
         print('O cliente não tem saldo suficiente para comprar o produto');
       }
@@ -39,16 +43,13 @@ class Cliente extends Pessoa {
   }
 
   double calcularTotalGasto() {
-    double totalGasto = 0;
-    _produtosComprados.forEach((Produto produto) {
-     totalGasto += produto.valor;
-    });
-    return totalGasto;
+    return _produtosComprados.isEmpty
+        ? 0 : _produtosComprados.fold(0, (total, produto) => total + produto.valor);
   }
 
   double calcularMediaProdutosComprados() {
     double totalGasto = calcularTotalGasto();
-      return totalGasto / _produtosComprados.length;
+    return totalGasto / _produtosComprados.length;
   }
 
   void verResumoCliente() {
@@ -58,8 +59,45 @@ class Cliente extends Pessoa {
   }
 
   void ordenarProdutosComprados() {
-    List<Produto> produtosOrdenados = List.from(_produtosComprados);
-    produtosOrdenados.sort((a, b) => a.nome.compareTo(b.nome));
-    imprimirProdutosOrdenados(produtosOrdenados);
+    _produtosComprados.sort((a, b) => a.nome.compareTo(b.nome));
+  }
+
+  void verProdutosComprados() {
+    ordenarProdutosComprados();
+    imprimirProdutosOrdenados(_produtosComprados);
+  }
+
+  void consultarTotalPontos() {
+   imprimirTotalPontos(nome, pontos);
+  }
+
+  void trocarPontosPorBrinde(Brinde brinde) {
+    try {
+      if (pontos >= brinde.pontosNecessarios) {
+        brinde.realizarTroca();
+        pontos -= brinde.pontosNecessarios;
+        _brindes.add(brinde);
+
+        print('$nome trocou seus pontos por um ${brinde.nome} e ainda restou $pontos pontos.');
+      } else {
+        print('$nome não possui pontos suficientes para trocar pelo ${brinde.nome}');
+      }
+    } catch (e) {
+      if (e is Exception) {
+        print('Falha na troca');
+      }
+    }
+  }
+
+  void ordenarBrindes() {
+    _brindes.sort((a, b) => a.nome.compareTo(b.nome));
+  }
+
+  void verBrindes() {
+    imprimirNomeCliente(nome);
+    ordenarBrindes();
+    _brindes.forEach((brinde) {
+      imprimirBrindesRecebidos(brinde);
+    });
   }
 }
