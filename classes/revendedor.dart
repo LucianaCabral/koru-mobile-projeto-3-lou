@@ -36,6 +36,7 @@ class Revendedor extends Pessoa {
     if (produto.qtdEstoque > 0) {
       produto.realizarVenda();
       _produtosVendidos.add(produto);
+      totalProdutosVendidos += produto.valor;
     } else {
       throw Exception(
           "No momento não possuímos o produto $nome em estoque. MÉTODO VENDER PRODUTO NA CLASSE REVENDEDOR");
@@ -43,23 +44,15 @@ class Revendedor extends Pessoa {
   }
 
   double calcularTotalVendido() {
-    if (_produtosVendidos.isNotEmpty) {
-      _produtosVendidos.forEach((Produto produto) {
-        totalProdutosVendidos += produto.valor;
-      });
-      return totalProdutosVendidos.toDouble();
-    } else {
-      throw Exception("Nenhum produto vendido ainda.");
-    }
+    return _produtosVendidos.fold(0, (total, produto) => total + produto.valor);
   }
 
   double calcularMediaProdutosVendidos() {
-    return totalProdutosVendidos / _produtosVendidos.length;
+    return _produtosVendidos.isEmpty ? 0 : totalProdutosVendidos / _produtosVendidos.length;
   }
 
-  double calcularLucro() {
-    return totalProdutosVendidos * porcentagemDeLucro;
-  }
+  double calcularLucro() => totalProdutosVendidos * porcentagemDeLucro;
+
 
   void verResumo() {
     double totalVendido = calcularTotalVendido();
