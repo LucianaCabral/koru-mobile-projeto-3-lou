@@ -43,11 +43,8 @@ class Cliente extends Pessoa {
   }
 
   double calcularTotalGasto() {
-    double totalGasto = 0;
-    _produtosComprados.forEach((Produto produto) {
-     totalGasto += produto.valor;
-    });
-    return totalGasto;
+    return _produtosComprados.isEmpty
+        ? 0 : _produtosComprados.fold(0, (total, produto) => total + produto.valor);
   }
 
   double calcularMediaProdutosComprados() {
@@ -62,9 +59,7 @@ class Cliente extends Pessoa {
   }
 
   void ordenarProdutosComprados() {
-    List<Produto> produtosOrdenados = List.from(_produtosComprados);
-    produtosOrdenados.sort((a, b) => a.nome.compareTo(b.nome));
-    imprimirProdutosOrdenados(produtosOrdenados);
+    _produtosComprados.sort((a, b) => a.nome.compareTo(b.nome));
   }
 
   void verProdutosComprados() {
@@ -73,7 +68,7 @@ class Cliente extends Pessoa {
   }
 
   void consultarTotalPontos() {
-    print('$nome possui $pontos pontos.');
+   imprimirTotalPontos(nome, pontos);
   }
 
   void trocarPontosPorBrinde(Brinde brinde) {

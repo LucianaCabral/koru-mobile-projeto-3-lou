@@ -1,3 +1,4 @@
+import 'classes/brinde.dart';
 import 'classes/cliente.dart';
 import 'classes/produto.dart';
 import 'classes/revendedor.dart';
@@ -20,7 +21,7 @@ main() {
   Cliente cliente2 = Cliente(
     null,
     100,
-    nome: 'Miguek',
+    nome: 'Miguel',
     cpf: '1111',
     dataNascimento: DateTime(2000, 12, 02),
   );
@@ -37,6 +38,10 @@ main() {
   Produto produto3 = Produto(
       nome: 'Máscara de Cílios Make B. Explosion Effect 10g', valor: 99.90, qtdEstoque: 94);
 
+  Brinde brinde = Brinde(nome: 'Sbonete de baunilha 90 g ', pontosNecessarios: 1, qtdEmEstoque: 40);
+  Brinde brinde1 = Brinde(nome:'Pó Banana Translúcido 2 Intense 12g', pontosNecessarios: 1, qtdEmEstoque: 40);
+  Brinde brinde2 = Brinde(nome:'Kit Esponjas de Maquiagem 3 unidades', pontosNecessarios: 1, qtdEmEstoque: 40);
+
 /* Declaração de objetos Produto */
 
   /* Testes método falar() */
@@ -45,19 +50,20 @@ main() {
   cliente1.falar('Olá, quero comporar um produto');
 
   //Add dinheiro
-  print(
-      'O Cliente ${cliente1.nome} tem o seguinte saldo ${cliente1.dinheiro} antes do depósito');
+  imprimirSaldo(cliente1);
   cliente1.adicionarDinheiro(1000);
   pularLinha();
 
 //aqui o cliente compra o produto e nele já tem um método que chama o revendedor.venderProduto
+  cliente1.comprarProduto(produto3, revendedor1);
   cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto1, revendedor1);
   cliente1.comprarProduto(produto2, revendedor1);
-  cliente1.comprarProduto(produto3, revendedor1);
+
+  cliente1.termometroDoHumor(Humor.cansada);
 
   pularLinha();
   print('Informações do Produto:');
@@ -70,8 +76,18 @@ main() {
   mostrarQtdVendida(produto2.nome, produto2.qtdVendida);
 
   pularLinha();
+  print('Resumo do revendedor');
   revendedor1.verResumo();
   pularLinha();
+  print('Resumo do cliente');
   cliente1.verResumoCliente();
-  cliente1.ordenarProdutosComprados();
+  pularLinha();
+  print('Ver Produtos comprados e ordenados');
+  cliente1.verProdutosComprados();
+  pularLinha();
+  cliente1.consultarTotalPontos();
+  cliente1.trocarPontosPorBrinde(brinde1);
+  cliente1.trocarPontosPorBrinde(brinde2);
+  cliente1.ordenarBrindes();
+  cliente1.verBrindes();
 }
