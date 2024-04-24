@@ -15,12 +15,7 @@ class Revendedor extends Pessoa {
 
   @override
   void falar(String texto) {
-    String titulo = genero == Genero.masculino
-        ? 'Revendedor'
-        : genero == Genero.feminino
-        ? 'Revendedora'
-        : 'Cliente Revendedor';
-    print('${titulo}  diz: ${texto}');
+    print('${genero?.title} $nome diz: ${texto}');
   }
 
   void venderProduto(Produto produto) {

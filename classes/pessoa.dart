@@ -36,16 +36,6 @@ class Pessoa{
   }
 
   void termometroDoHumor(Humor humor) {
-    Map<Humor, String> mensagens = {
-      Humor.animada: 'Que bom que você está animada!',
-      Humor.ansiosa: 'Pare um pouco, conte até mil e respire.',
-      Humor.cansada: 'Recarregue as suas baterias e volte com força total!',
-      Humor.feliz: 'Quem bom que você está feliz!!',
-      Humor.triste: 'Não fique triste que ainda pode piorar. Te anima e siga em frente.',
-      Humor.estressada: 'No stress! Fica na boa!',
-    };
-
-    String humorDoDia = mensagens[humor] ?? '';
-    print('$nome, ${humorDoDia}');
+    print('${humor.mensagem}');
   }
 }
