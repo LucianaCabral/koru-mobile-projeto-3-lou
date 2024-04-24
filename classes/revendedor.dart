@@ -1,11 +1,11 @@
-import '../enums/enums.dart';
+import '../enums/genero..dart';
 import '../utils.dart';
 import 'pessoa.dart';
 import 'produto.dart';
 
 class Revendedor extends Pessoa {
   final String matricula;
-  List<Produto> _produtosVendidos = <Produto>[];
+  final List<Produto> _produtosVendidos = <Produto>[];
 
   final double porcentagemDeLucro = 0.2;
   double totalProdutosVendidos = 0.0;
@@ -15,21 +15,12 @@ class Revendedor extends Pessoa {
 
   @override
   void falar(String texto) {
-    String titulo;
-    switch (genero) {
-      case (Genero.masculino):
-        titulo = 'Revendedor';
-        break;
-      case (Genero.feminino):
-        titulo = 'Revendedora';
-        break;
-      case (Genero.outro):
-        titulo = 'Pessoa revendedora';
-        break;
-      default:
-        titulo = 'Pessoa';
-    }
-    print('$titulo ${nome} diz: ${texto}');
+    String titulo = genero == Genero.masculino
+        ? 'Revendedor'
+        : genero == Genero.feminino
+        ? 'Revendedora'
+        : 'Cliente Revendedor';
+    print('${titulo}  diz: ${texto}');
   }
 
   void venderProduto(Produto produto) {

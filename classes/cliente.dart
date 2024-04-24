@@ -6,7 +6,7 @@ import 'revendedor.dart';
 
 class Cliente extends Pessoa {
   double dinheiro;
-  List<Produto> _produtosComprados = <Produto>[];
+  final List<Produto> _produtosComprados = <Produto>[];
   List<Brinde> _brindes = <Brinde>[];
   int pontos = 0;
 
