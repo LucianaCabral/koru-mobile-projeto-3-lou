@@ -2,13 +2,17 @@ import 'classes/brinde.dart';
 import 'classes/cliente.dart';
 import 'classes/produto.dart';
 import 'classes/revendedor.dart';
-import 'enums/enums.dart';
+import 'enums/genero..dart';
+import 'enums/humor.dart';
 import 'utils.dart';
 
 main() {
   /* Declaração de objetos Revendedor */
   Revendedor revendedor1 = Revendedor(Genero.masculino, "123456",
       nome: "Jorge", cpf: "064646464", dataNascimento: DateTime(2000, 12, 02));
+
+  Revendedor revendedor2 = Revendedor(Genero.feminino, "123456",
+      nome: "Ana", cpf: "064646464", dataNascimento: DateTime(2000, 12, 02));
 
   // Criando um cliente
   Cliente cliente1 = Cliente(
@@ -90,4 +94,8 @@ main() {
   cliente1.trocarPontosPorBrinde(brinde2);
   cliente1.ordenarBrindes();
   cliente1.verBrindes();
+
+  revendedor1.falar("OI");
+  revendedor2.falar("OI");
+  cliente2.termometroDoHumor(Humor.triste);
 }
