@@ -1,15 +1,16 @@
 import '../enums/genero..dart';
 import '../enums/humor.dart';
+import '../utils.dart';
 
 class Pessoa{
   String nome;
   String cpf;
   final DateTime dataNascimento;
-  int? _idade;
+  int? idade;
   final Genero? genero;
 
   Pessoa(this.genero, {required this.nome, required this.cpf, required this.dataNascimento}){
-    _idade = _calcularIdade();
+    idade = _calcularIdade();
   }
 
   int _calcularIdade() {
@@ -22,20 +23,16 @@ class Pessoa{
     return idade;
   }
 
-  void maiorIdade(){
-    if (_idade! >= 18) {
-      print('$nome tem $_idade anos, portanto é maior de idade.');
-    } else {
-      print('$nome tem $_idade anos, portanto é menor de idade.');
-    }
+  void maiorIdade() {
+    String statusIdade = (idade ?? 0) >= 18 ? "maior de idade" : "menor de idade";
+    imprimirCalcularIdade(nome, idade!, statusIdade);
   }
 
-  @override
-  void falar(String texto){
-    print('${this.nome} diz: ${texto}');
+  void falar(String texto) {
+    imprimirFalar('',nome, texto);
   }
 
   void termometroDoHumor(Humor humor) {
-    print('${humor.mensagem}');
+    imprimirTermometroHumor(humor);
   }
 }

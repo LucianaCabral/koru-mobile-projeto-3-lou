@@ -17,9 +17,9 @@ class Brinde {
   void realizarTroca() {
     if (qtdEmEstoque > 0) {
       qtdEmEstoque--;
-      print("Troca realizada! Você ganhou um(a) $nome");
+      imprimirTrocaRealizada(this);
     } else {
-      print("No momento não possuímos o produto $nome em estoque.");
+      imprimirTrocaNaoRealizada(this);
     }
   }
 }
