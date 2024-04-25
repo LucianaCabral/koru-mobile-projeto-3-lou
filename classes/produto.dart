@@ -1,3 +1,6 @@
+import '../enums/erro.dart';
+import '../utils.dart';
+
 class Produto {
   final String nome;
   late double valor;
@@ -11,9 +14,9 @@ class Produto {
     if (qtdEstoque > 0) {
       qtdVendida += 1;
       qtdEstoque -= 1;
-      print('Compra de $qtdVendida $nome realizada com sucesso!!!!');
+      imprimirRealizarVenda(this.nome);
     } else {
-      throw Exception("No momento não possuímos o produto $nome em estoque.");
+      throw Exception(Erro.Produto);
     }
   }
 
