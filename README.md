@@ -1,3 +1,4 @@
+
 ### Desafio 3 - Módulo 3 :books:
 
 Este projeto foi desenvolvido em Android Studio e Visual Studio Code :
@@ -198,3 +199,7 @@ Documentação :bulb:
 [Trello - R6](https://trello.com/b/RKc77YOX/grupo-6)
 
 
+![image](https://github.com/LucianaCabral/koru-mobile-projeto-3-lou/assets/63366380/e940d301-eb40-4c2f-9920-f3f43ed7255d)
+
+
+# B O T I C Á R I O - D E S E N V O L V E / 2024 LINGUAGEM  D A R T
